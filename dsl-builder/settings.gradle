@@ -1,0 +1,3 @@
+rootProject.name = 'dsl-builder'
+include 'dsl-builder-core'
+
