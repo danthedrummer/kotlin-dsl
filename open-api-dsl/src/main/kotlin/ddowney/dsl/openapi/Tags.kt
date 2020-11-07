@@ -1,6 +1,9 @@
 package ddowney.dsl.openapi
 
+import kotlinx.serialization.Serializable
+
 @OpenApiDslMarker
+@Serializable
 class Tags() {
 
     constructor(block: Tags.() -> Unit) : this() {

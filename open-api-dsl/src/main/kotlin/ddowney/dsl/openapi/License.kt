@@ -1,6 +1,9 @@
 package ddowney.dsl.openapi
 
+import kotlinx.serialization.Serializable
+
 @OpenApiDslMarker
+@Serializable
 class License() {
 
     constructor(block: License.() -> Unit) : this() {

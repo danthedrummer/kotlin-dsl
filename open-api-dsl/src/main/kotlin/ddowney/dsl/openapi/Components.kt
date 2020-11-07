@@ -1,19 +1,23 @@
 package ddowney.dsl.openapi
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+
 @OpenApiDslMarker
+@Serializable
 class Components() {
 
     constructor(block: Components.() -> Unit) : this() {
         apply(block)
     }
 
-    var schemes: Map<String, Any>? = null // TODO: Implement schemes
+    var schemes: Map<String, @Contextual Any>? = null // TODO: Implement schemes
     var responses: Map<String, Response>? = null
     var parameters: Map<String, Parameter>? = null
     var examples: Map<String, Example>? = null
     var requestBodies: Map<String, RequestBody>? = null
     var headers: Map<String, Header>? = null
-    var securitySchemes: Map<String, Any>? = null // TODO: Implement security scheme
+    var securitySchemes: Map<String, @Contextual Any>? = null // TODO: Implement security scheme
     var links: Map<String, Link>? = null
     var callbacks: Map<String, Path>? = null
 

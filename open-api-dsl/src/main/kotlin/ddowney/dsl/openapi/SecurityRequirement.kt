@@ -1,6 +1,9 @@
 package ddowney.dsl.openapi
 
+import kotlinx.serialization.Serializable
+
 @OpenApiDslMarker
+@Serializable
 class SecurityRequirement() {
 
     constructor(block: SecurityRequirement.() -> Unit) : this() {

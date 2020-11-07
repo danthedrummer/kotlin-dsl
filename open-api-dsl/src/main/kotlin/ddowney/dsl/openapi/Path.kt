@@ -1,6 +1,10 @@
 package ddowney.dsl.openapi
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+
 @OpenApiDslMarker
+@Serializable
 class Path() {
 
     constructor(block: Path.() -> Unit) : this() {
@@ -19,7 +23,7 @@ class Path() {
     var patch: Operation? = null
     var trace: Operation? = null
     var servers: List<Server>? = null
-    var parameters: List<Any>? = null //TODO: Implement parameters
+    var parameters: List<@Contextual Any>? = null //TODO: Implement parameters
 
     fun _ref(block: () -> String) {
         this._ref = block()

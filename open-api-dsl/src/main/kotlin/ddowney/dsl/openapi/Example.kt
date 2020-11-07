@@ -1,6 +1,10 @@
 package ddowney.dsl.openapi
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
+
 @OpenApiDslMarker
+@Serializable
 class Example() {
 
     constructor(block: Example.() -> Unit) : this() {
@@ -9,7 +13,7 @@ class Example() {
 
     var summary: String? = null
     var description: String? = null
-    var value: Any? = null
+    var value: @Contextual Any? = null
     var externalValue: String? = null
 
     fun summary(block: () -> String) {

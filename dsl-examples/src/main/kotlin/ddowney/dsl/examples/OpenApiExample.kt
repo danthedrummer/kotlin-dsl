@@ -1,5 +1,6 @@
 package ddowney.dsl.examples
 
+import com.charleskorn.kaml.Yaml
 import ddowney.dsl.openapi.Document
 import com.google.gson.GsonBuilder
 
@@ -151,5 +152,6 @@ fun main() {
         }
     }
 
-    println(gson.toJson(doc))
+//    println(gson.toJson(doc))
+    println(Yaml.default.encodeToString(Document.serializer(), doc))
 }
