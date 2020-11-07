@@ -7,7 +7,7 @@ private val gson = GsonBuilder().setPrettyPrinting().create()
 fun main() {
 
     val doc = Document {
-        openApi
+        openApi { "3.0.3" }
 
         info {
             title { "Example API" }
