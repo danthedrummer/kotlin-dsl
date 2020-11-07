@@ -70,6 +70,11 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-# Extra ignores
+# Ignore the root gradle directory
 .gradle/
-build/
+
+# Ignore all build directory contents everywhere in the project
+**/build/**
+
+# Ignore all contents of the .idea folder
+.idea/**
