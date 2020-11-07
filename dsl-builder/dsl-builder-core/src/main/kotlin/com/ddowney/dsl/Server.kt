@@ -1,14 +1,15 @@
 package com.ddowney.dsl
 
-fun createServer(block: Server.() -> Unit): Server = Server()(block)
+@OpenApiDslMarker
+class Server() {
 
-class Server {
+    constructor(block: Server.() -> Unit) : this() {
+        apply(block)
+    }
 
     private var url: String? = null
     private var description: String? = null
-    private val variables: MutableMap<String, ServerVariable> = mutableMapOf()
-
-    operator fun invoke(block: Server.() -> Unit): Server = this.also(block)
+    private var variables: MutableMap<String, ServerVariable>? = null
 
     fun url(block: () -> String) {
         this.url = block()
@@ -18,18 +19,9 @@ class Server {
         this.description = block()
     }
 
-    fun variables(block: ServerVariablesReceiver.() -> Unit) {
-        this.variables.putAll(ServerVariablesReceiver()(block))
-    }
-
-}
-
-class ServerVariablesReceiver : HashMap<String, ServerVariable>() {
-
-    operator fun invoke(block: ServerVariablesReceiver.() -> Unit): ServerVariablesReceiver = this.also(block)
-
-    fun variable(name: String, block: ServerVariable.() -> Unit) {
-        put(name, ServerVariable()(block))
+    fun variables(block: ServerVariables.() -> Unit) {
+        this.variables = ServerVariables(block).serverVariables
     }
 }
+
 

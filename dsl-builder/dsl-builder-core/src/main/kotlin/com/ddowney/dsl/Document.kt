@@ -1,55 +1,50 @@
 package com.ddowney.dsl
 
-fun createDocument(block: Document.() -> Unit): Document = Document()(block)
+@OpenApiDslMarker
+class Document() {
 
-class Document {
+    constructor(block: Document.() -> Unit) : this() {
+        block()
+    }
 
-    private var openApi: String? = null
-    private var info: Info? = null
-    private var servers: Any? = null
-    private var paths: Any? = null
-    private var components: Any? = null
-    private var security: Any? = null
-    private var tags: Any? = null
-    private var externalDocs: Any? = null
-
-    operator fun invoke(block: Document.() -> Unit): Document = this.also(block)
+    var openApi: String? = null
+    var info: Info? = null
+    var servers: List<Server>? = null
+    var paths: Map<String, Path>? = null
+    var components: Components? = null
+    var security: List<SecurityRequirement>? = null
+    var tags: List<Tag>? = null
+    var externalDocs: ExternalDocs? = null
 
     fun openApi(block: () -> String) {
         this.openApi = block()
     }
 
     fun info(block: Info.() -> Unit) {
-        this.info =  Info()(block)
+        this.info = Info(block)
     }
 
-    // TODO: Make into a list
-    fun servers(block: Server.() -> Unit) {
-        this.servers = Server()(block)
+    fun servers(block: Servers.() -> Unit) {
+        this.servers = Servers(block).servers
     }
 
-    fun paths(block: () -> Any) {
-        // TODO
-        this.paths = block()
+    fun paths(block: Paths.() -> Unit) {
+        this.paths = Paths(block).paths
     }
 
-    fun components(block: () -> Any) {
-        // TODO
-        this.components = block()
+    fun components(block: Components.() -> Unit) {
+        this.components = Components(block)
     }
 
-    fun security(block: () -> Any) {
-        // TODO
-        this.security = block()
+    fun security(block: SecurityRequirements.() -> Unit) {
+        this.security = SecurityRequirements(block).securityRequirements
     }
 
-    fun tags(block: () -> Any) {
-        // TODO
-        this.tags = block()
+    fun tags(block: Tags.() -> Unit) {
+        this.tags = Tags(block).tags
     }
 
-    fun externalDocs(block: () -> Any) {
-        // TODO
-        this.externalDocs = block()
+    fun externalDocs(block: ExternalDocs.() -> Unit) {
+        this.externalDocs = ExternalDocs(block)
     }
 }
