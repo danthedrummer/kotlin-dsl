@@ -12,8 +12,6 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.google.code.gson:gson:2.8.6")
-    implementation("org.yaml:snakeyaml:1.21")
 
     testImplementation("junit:junit:4.12")
 }

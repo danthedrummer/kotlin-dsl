@@ -1,5 +1,6 @@
-package com.ddowney.dsl
+package ddowney.dsl.examples
 
+import com.ddowney.dsl.Document
 import com.google.gson.GsonBuilder
 
 private val gson = GsonBuilder().setPrettyPrinting().create()

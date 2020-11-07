@@ -1,5 +1,6 @@
-rootProject.name = "open-api-dsl"
+rootProject.name = "kotlin-dsl"
 
 include(
-    "open-api-dsl"
+    "open-api-dsl",
+    "dsl-examples"
 )
